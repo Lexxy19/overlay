@@ -6,7 +6,7 @@ const PARTICIPANTS = [
   // --- TUS USUARIOS ---
   { id: '993376547648057435', name: 'Lexxy', color: '#a855f7' },
   { id: '742532879120203806', name: 'GnediA', color: '#ecf755' },
-  // --- MOCKS ---
+  // --- MOCKS (Total 9 participantes para coincidir con la imagen) ---
   { id: 'mock-1', name: 'P3', color: '#55f7e8' },
   { id: 'mock-2', name: 'P4', color: '#55f76d' },
   { id: 'mock-3', name: 'P5', color: '#f75555' },
@@ -14,9 +14,18 @@ const PARTICIPANTS = [
   { id: 'mock-5', name: 'P7', color: '#f755e0' },
   { id: 'mock-6', name: 'P8', color: '#556df7' },
   { id: 'mock-7', name: 'P9', color: '#b0f755' },
-  { id: 'mock-8', name: 'P10', color: '#f7f7f7' },
-  { id: 'mock-9', name: 'P11', color: '#9155f7' },
+  
 ];
+
+// Ajuste manual de altura para crear el "Arco" (en píxeles).
+// Los extremos (0) están más arriba, el centro (40) más abajo.
+const verticalOffsets = [0, 15, 25, 32, 38, 40, 38, 32, 25];
+
+// Ajuste manual del espaciado horizontal (en píxeles).
+// Define el margen derecho para cada elemento (excepto el último, o puedes usar margin-x).
+// Valores más grandes = más separación.
+const horizontalSpacings = [70, 40, 50, 40, 50, 60, 60, 60, 60];
+
 
 function App() {
   const [speakingState, setSpeakingState] = useState({});
@@ -35,29 +44,31 @@ function App() {
 
   return (
     <div
-      // 1. VOLVEMOS AL FLEX ORIGINAL CON PADDING TOP (pt-32 para bajarlo más si es necesario)
-      className="min-h-screen w-full flex items-start justify-center pt-32 bg-cover bg-center overflow-hidden bg-black"
+      className="min-h-screen w-full flex items-start justify-center bg-cover bg-center overflow-hidden bg-black"
+      // Asegúrate de que la ruta de la imagen sea correcta
       style={{ backgroundImage: "url('/FOGATA.webp')" }}
     >
+      <div className="relative w-fit mt-10"> {/* Agregué un pequeño margen superior global */}
 
-      {/* 2. WRAPPER RELATIVO
-          Este div envuelve todo. Al ser 'relative', los hijos 'absolute'
-          se posicionarán respecto a ÉL, no respecto a la pantalla.
-      */}
-      <div className="relative w-fit">
-
-        {/* 3. CONTENEDOR DE FOCOS
-            top-0: Se alinea al borde superior de la imagen.
-            -translate-y-[80%]: Sube los focos hacia arriba para que no tapen la imagen.
-            w-full: Ocupa el mismo ancho que la imagen.
-        */}
+        {/* CONTENEDOR DE FOCOS */}
         <div
-          className="absolute top-0 left-15 w-full flex justify-between items-end px-[2%] transform -translate-y-[40%]"
-          style={{ height: '600px' }} // Altura del área de los focos
+          className="absolute top-0 left-0 w-full flex justify-center items-end px-[5%] z-10"
+          style={{
+            height: '600px',
+            transform: 'translateY(-42%)' // Ajuste fino vertical global
+          }}
         >
-          {PARTICIPANTS.map((user) => (
-            // flex-1 asegura que cada foco ocupe el mismo espacio disponible
-            <div key={user.id} className="flex-1 flex justify-cente">
+          {PARTICIPANTS.map((user, index) => (
+            <div
+              key={user.id}
+              className="flex-none flex justify-center"
+              style={{
+                // Aquí aplicamos la curva para que coincida con los pedestales
+                transform: `translateY(${verticalOffsets[index] || 0}px)`,
+                marginLeft: `${horizontalSpacings[index] || 10}px`,
+                marginRight: `${horizontalSpacings[index] || 10}px`,
+              }}
+            >
               <Foco
                 name={user.name}
                 color={user.color}
@@ -67,13 +78,12 @@ function App() {
           ))}
         </div>
 
-        {/* 4. IMAGEN DE PERSONAJES
-            Es la base que define el tamaño del contenedor wrapper.
-        */}
+        {/* IMAGEN DE PERSONAJES (Referencia de posición) */}
         <img
           src="/iconos.webp"
           alt="Personajes"
-          className="block max-w-full h-auto opacity-90"
+          className="block max-w-full h-auto relative z-0"
+          style={{ minWidth: '1200px' }} // Asegura que no se haga muy pequeña en pantallas chicas
         />
       </div>
     </div>
