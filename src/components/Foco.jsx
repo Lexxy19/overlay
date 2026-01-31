@@ -24,7 +24,7 @@ const Foco = ({ name, active, color = "#ffffff" }) => {
             : 'inset 0 0 12px rgba(0,0,0,0.8)'
         }}
       >
-        
+
       </div>
 
       {/* HAZ DE LUZ: Dimensiones aumentadas y blur suavizado para evitar pixelado */}
