@@ -24,6 +24,7 @@ function App() {
     '/Gxterne/GX_5A.gif',
     '/Gxterne/GX_6A.gif',
     '/Gxterne/GX_7A.gif',
+    '/Gxterne/GX_8AS.gif',
   ], []);
 
   // 2. Estado para guardar cuál GIF se está mostrando actualmente. Empieza con la base (índice 0).
@@ -129,7 +130,7 @@ function App() {
   useEffect(() => {
     let timeoutId;
 
-    if (isBaseState) {
+    if (isBaseStateZhergal) {
       // --- MODO BASE ---
       // Estamos mostrando la base. Esperamos unos segundos y luego cambiamos a una acción aleatoria.
       const baseDuration = Math.random() < 0.5 ? 2000 : 3000;  // 2 o 3 segundos aleatorio
@@ -209,7 +210,7 @@ function App() {
   useEffect(() => {
     let timeoutId;
 
-    if (isBaseState) {
+    if (isBaseStateKaotik) {
       // --- MODO BASE ---
       // Estamos mostrando la base. Esperamos unos segundos y luego cambiamos a una acción aleatoria.
       const baseDuration = Math.random() < 0.5 ? 2000 : 3000;  // 2 o 3 segundos aleatorio
@@ -262,6 +263,7 @@ function App() {
     '/Bluespace/BL_1A.gif',       // Índice 1: Acción
     '/Bluespace/BL_2A.gif',      // Índice 2: Acción (Noté el guion bajo en tu ejemplo)
     '/Bluespace/BL_3A.gif',       // Índice 3...
+    '/Bluespace/BL_4AS.gif'
   ], []);
 
   // 2. Estado para guardar cuál GIF se está mostrando actualmente. Empieza con la base (índice 0).
@@ -288,7 +290,7 @@ function App() {
   useEffect(() => {
     let timeoutId;
 
-    if (isBaseState) {
+    if (isBaseStateBluespace) {
       // --- MODO BASE ---
       // Estamos mostrando la base. Esperamos unos segundos y luego cambiamos a una acción aleatoria.
       const baseDuration = Math.random() < 0.5 ? 2000 : 3000; // 2 o 3 segundos aleatorio
@@ -369,7 +371,7 @@ function App() {
   useEffect(() => {
     let timeoutId;
 
-    if (isBaseState) {
+    if (isBaseStateVerttier) {
       // --- MODO BASE ---
       // Estamos mostrando la base. Esperamos unos segundos y luego cambiamos a una acción aleatoria.
       const baseDuration = Math.random() < 0.5 ? 2000 : 3000;  // 2 o 3 segundos aleatorio
@@ -451,7 +453,7 @@ function App() {
   useEffect(() => {
     let timeoutId;
 
-    if (isBaseState) {
+    if (isBaseStateJuan) {
       // --- MODO BASE ---
       // Estamos mostrando la base. Esperamos unos segundos y luego cambiamos a una acción aleatoria.
       const baseDuration = Math.random() < 0.5 ? 2000 : 3000;  // 2 o 3 segundos aleatorio
@@ -537,7 +539,7 @@ function App() {
   useEffect(() => {
     let timeoutId;
 
-    if (isBaseState) {
+    if (isBaseStateGnediA) {
       // --- MODO BASE ---
       // Estamos mostrando la base. Esperamos unos segundos y luego cambiamos a una acción aleatoria.
       const baseDuration = Math.random() < 0.5 ? 2000 : 3000;  // 2 o 3 segundos aleatorio
@@ -783,7 +785,7 @@ function App() {
       {/* 2. Capa del Personaje: Absoluta y cubriendo todo el fondo */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-49">
         <img
-          src={currentGifSrcBurgada}
+          src={'/Leroz/leroz.webp'}
           alt="Personaje"
           className="w-full h-full object-contain"
         /* Eliminamos márgenes y tamaños fijos en px que rompen la relación */

@@ -8,5 +8,5 @@ export const ROLES_CONFIG = [
   { role: 'Nacho21', label: 'Nacho21', color: '#b0b0b0' },
   { role: 'Gxterne', label: 'Gxterne', color: '#2438aa' },
   { role: 'Juanxflid', label: 'Juanxflid', color: '#7e7e7e' },
-  { role: 'Burgada', label: 'Burgada', color: '#55f778' },
+  { role: 'Leroz', label: 'Leroz', color: '#2cf8ff' },
 ];
